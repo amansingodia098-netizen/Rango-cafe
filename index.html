@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rango Cafe & Kitchen | Best Cafe in Vaishali, Jaipur</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pale-yellow: #F5DEB3;
+            --gold: #D4AF37;
+            --dark-bg: #0D0D0D;
+            --dark-secondary: #1A1A1A;
+        }
+        
+        * {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+        }
+        
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .bg-pale-yellow { background-color: var(--pale-yellow); }
+        .text-pale-yellow { color: var(--pale-yellow); }
+        .text-gold { color: var(--gold); }
+        .border-pale-yellow { border-color: var(--pale-yellow); }
+        .bg-dark { background-color: var(--dark-bg); }
+        .bg-dark-secondary { background-color: var(--dark-secondary); }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--pale-yellow), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2047&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(245, 222, 179, 0.15);
+        }
+        
+        .instagram-gradient {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background: rgba(13, 13, 13, 0.9);
+        }
+        
+        .specialty-card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 1px solid rgba(245, 222, 179, 0.2);
+        }
+        
+        .discount-card {
+            background: linear-gradient(135deg, rgba(245, 222, 179, 0.1), rgba(212, 175, 55, 0.1));
+            border: 2px solid var(--gold);
+        }
+        
+        .glow {
+            box-shadow: 0 0 30px rgba(245, 222, 179, 0.3);
+        }
+        
+        .menu-item:hover .menu-price {
+            background-color: var(--pale-yellow);
+            color: #0d0d0d;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-mug-hot text-pale-yellow text-2xl"></i>
+                    <span class="font-playfair text-xl font-bold text-pale-yellow">Rango Cafe</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-pale-yellow hover:text-gold transition">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-pale-yellow transition">About</a>
+                    <a href="#specialties" class="text-gray-300 hover:text-pale-yellow transition">Specialties</a>
+                    <a href="#menu" class="text-gray-300 hover:text-pale-yellow transition">Menu</a>
+                    <a href="#discount" class="text-gray-300 hover:text-pale-yellow transition">Offers</a>
+                    <a href="#contact" class="text-gray-300 hover:text-pale-yellow transition">Contact</a>
+                </div>
+                
+                <a href="https://instagram.com" target="_blank" class="hidden md:flex items-center space-x-2 bg-pale-yellow text-black px-4 py-2 rounded-full hover:bg-gold transition font-medium">
+                    <i class="fab fa-instagram"></i>
+                    <span>Follow Us</span>
+                </a>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-pale-yellow text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-secondary">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#home" class="block text-pale-yellow py-2">Home</a>
+                <a href="#about" class="block text-gray-300 py-2">About</a>
+                <a href="#specialties" class="block text-gray-300 py-2">Specialties</a>
+                <a href="#menu" class="block text-gray-300 py-2">Menu</a>
+                <a href="#discount" class="block text-gray-300 py-2">Offers</a>
+                <a href="#contact" class="block text-gray-300 py-2">Contact</a>
+                <a href="https://instagram.com" target="_blank" class="flex items-center justify-center space-x-2 bg-pale-yellow text-black px-4 py-3 rounded-full mt-4">
+                    <i class="fab fa-instagram"></i>
+                    <span>Follow on Instagram</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative">
+        <div class="text-center px-4 max-w-4xl mx-auto">
+            <div class="floating mb-6">
+                <i class="fas fa-mug-hot text-pale-yellow text-6xl"></i>
+            </div>
+            <p class="text-pale-yellow tracking-widest text-sm mb-4 uppercase">Welcome to</p>
+            <h1 class="font-playfair text-5xl md:text-7xl font-bold gradient-text mb-4">Rango Cafe & Kitchen</h1>
+            <p class="text-2xl text-gold font-playfair italic mb-6">Best Cafe in Vaishali</p>
+            <p class="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl mx-auto">Where every sip tells a story. Experience the perfect blend of Chai, Maggie & Cocktails in the heart of Jaipur.</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="#discount" class="bg-pale-yellow text-black px-8 py-4 rounded-full font-semibold hover:bg-gold transition transform hover:scale-105 flex items-center space-x-2">
+                    <i class="fas fa-gift"></i>
+                    <span>Get 15% OFF - Follow Us!</span>
+                </a>
+                <a href="#menu" class="border-2 border-pale-yellow text-pale-yellow px-8 py-4 rounded-full font-semibold hover:bg-pale-yellow hover:text-black transition">
+                    View Menu
+                </a>
+            </div>
+            
+            <div class="flex items-center justify-center space-x-6 text-pale-yellow">
+                <a href="https://instagram.com" target="_blank" class="hover:text-gold transition text-2xl"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com" target="_blank" class="hover:text-gold transition text-2xl"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/919782624466" target="_blank" class="hover:text-gold transition text-2xl"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <a href="#about" class="text-pale-yellow">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-gold tracking-widest text-sm mb-4 uppercase">Our Story</p>
+                    <h2 class="font-playfair text-4xl md:text-5xl font-bold text-pale-yellow mb-6">A Place Where Memories are Brewed</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        Nestled in the vibrant neighborhood of Chitrakoot, Jaipur, Rango Cafe & Kitchen is more than just a cafe – it's a sanctuary for food lovers and chai enthusiasts. We believe in creating moments that matter, one cup at a time.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-8">
+                        From our signature masala chai that warms your soul to the perfectly crafted maggie that brings back nostalgic memories, and our artisanal cocktails that set the evening mood – we've got something special for everyone.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6 text-center">
+                        <div>
+                            <p class="font-playfair text-4xl text-gold font-bold">5+</p>
+                            <p class="text-gray-400 text-sm">Years of Love</p>
+                        </div>
+                        <div>
+                            <p class="font-playfair text-4xl text-gold font-bold">10K+</p>
+                            <p class="text-gray-400 text-sm">Happy Customers</p>
+                        </div>
+                        <div>
+                            <p class="font-playfair text-4xl text-gold font-bold">50+</p>
+                            <p class="text-gray-400 text-sm">Menu Items</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cafe Interior" class="rounded-2xl w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Coffee" class="rounded-2xl w-full h-48 object-cover mt-8">
+                        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cocktails" class="rounded-2xl w-full h-48 object-cover">
+                        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cafe Vibes" class="rounded-2xl w-full h-48 object-cover mt-8">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-pale-yellow text-black p-4 rounded-xl">
+                        <p class="font-playfair font-bold text-lg">#RangoCafe</p>
+                        <p class="text-sm">Tag us on Instagram!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="specialties" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-gold tracking-widest text-sm mb-4 uppercase">What We're Famous For</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-pale-yellow">Our Specialties</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Chai -->
+                <div class="specialty-card rounded-3xl p-8 text-center card-hover">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-pale-yellow rounded-full flex items-center justify-center">
+                        <i class="fas fa-mug-hot text-4xl text-black"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-pale-yellow mb-4">Signature Chai</h3>
+                    <p class="text-gray-400 mb-6">Our legendary masala chai, brewed with secret spices passed down through generations. Every sip is a warm hug for your soul.</p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Masala Chai</span>
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Kulhad Chai</span>
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Ginger Chai</span>
+                    </div>
+                </div>
+                
+                <!-- Maggie -->
+                <div class="specialty-card rounded-3xl p-8 text-center card-hover">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-pale-yellow rounded-full flex items-center justify-center">
+                        <i class="fas fa-bowl-food text-4xl text-black"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-pale-yellow mb-4">Loaded Maggie</h3>
+                    <p class="text-gray-400 mb-6">Not your regular maggie! Our chef's special loaded maggie comes with exotic toppings and flavors that will blow your mind.</p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Cheese Maggie</span>
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Tandoori Maggie</span>
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Butter Maggie</span>
+                    </div>
+                </div>
+                
+                <!-- Cocktails -->
+                <div class="specialty-card rounded-3xl p-8 text-center card-hover">
+                    <div class="w-24 h-24 mx-auto mb-6 bg-pale-yellow rounded-full flex items-center justify-center">
+                        <i class="fas fa-martini-glass-citrus text-4xl text-black"></i>
+                    </div>
+                    <h3 class="font-playfair text-2xl font-bold text-pale-yellow mb-4">Crafted Cocktails</h3>
+                    <p class="text-gray-400 mb-6">Experience our bartender's artistry with handcrafted cocktails using premium spirits and fresh ingredients. Perfect for unwinding.</p>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Mojitos</span>
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">LIIT</span>
+                        <span class="bg-dark px-3 py-1 rounded-full text-sm text-gold border border-gold">Sangria</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Discount Section -->
+    <section id="discount" class="py-20 bg-dark-secondary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 text-9xl text-pale-yellow"><i class="fab fa-instagram"></i></div>
+            <div class="absolute bottom-10 right-10 text-9xl text-pale-yellow"><i class="fab fa-instagram"></i></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="discount-card rounded-3xl p-8 md:p-12 text-center glow">
+                <div class="instagram-gradient w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 pulse-animation">
+                    <i class="fab fa-instagram text-white text-4xl"></i>
+                </div>
+                
+                <h2 class="font-playfair text-3xl md:text-5xl font-bold text-pale-yellow mb-4">Get 15% OFF Instantly!</h2>
+                <p class="text-xl text-gold mb-6">Follow us on Instagram & Show at Billing</p>
+                
+                <div class="bg-dark rounded-2xl p-6 mb-8 max-w-md mx-auto">
+                    <p class="text-gray-300 mb-4">It's Simple:</p>
+                    <div class="space-y-3 text-left">
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-pale-yellow text-black rounded-full flex items-center justify-center font-bold">1</span>
+                            <span class="text-gray-300">Follow @RangoCafe on Instagram</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-pale-yellow text-black rounded-full flex items-center justify-center font-bold">2</span>
+                            <span class="text-gray-300">Post a Story & Tag Us</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="w-8 h-8 bg-pale-yellow text-black rounded-full flex items-center justify-center font-bold">3</span>
+                            <span class="text-gray-300">Show at Billing & Get 15% OFF!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://instagram.com" target="_blank" class="inline-flex items-center space-x-3 instagram-gradient text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition transform hover:scale-105">
+                    <i class="fab fa-instagram text-2xl"></i>
+                    <span>Follow @RangoCafe Now</span>
+                </a>
+                
+                <p class="text-gray-500 text-sm mt-6">*Offer valid on dine-in orders only. Cannot be combined with other offers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-gold tracking-widest text-sm mb-4 uppercase">Taste the Difference</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-pale-yellow mb-4">Our Menu</h2>
+                <p class="text-gray-400">A curated selection of our most loved items</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Menu Items -->
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-mug-hot text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Special Masala Chai</h4>
+                        <p class="text-gray-500 text-sm">House blend spices</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹49</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-mug-hot text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Kulhad Chai</h4>
+                        <p class="text-gray-500 text-sm">Traditional earthen cup</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹59</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-bowl-food text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Cheese Maggie</h4>
+                        <p class="text-gray-500 text-sm">Extra cheese loaded</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹99</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-bowl-food text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Tandoori Maggie</h4>
+                        <p class="text-gray-500 text-sm">Smoky tandoor flavor</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹129</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-martini-glass-citrus text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Classic Mojito</h4>
+                        <p class="text-gray-500 text-sm">Fresh mint & lime</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹199</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-martini-glass-citrus text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">LIIT</h4>
+                        <p class="text-gray-500 text-sm">Long Island Iced Tea</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹349</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-pizza-slice text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Loaded Fries</h4>
+                        <p class="text-gray-500 text-sm">Cheese & jalapeño</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹149</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-burger text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Rango Special Burger</h4>
+                        <p class="text-gray-500 text-sm">Double patty loaded</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹179</span>
+                </div>
+                
+                <div class="menu-item specialty-card rounded-2xl p-6 flex items-center space-x-4 card-hover cursor-pointer">
+                    <div class="w-16 h-16 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-ice-cream text-2xl text-black"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <h4 class="font-semibold text-pale-yellow">Cold Coffee</h4>
+                        <p class="text-gray-500 text-sm">With ice cream</p>
+                    </div>
+                    <span class="menu-price bg-dark-secondary px-3 py-1 rounded-full text-gold transition">₹129</span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="tel:09782624466" class="inline-flex items-center space-x-2 border-2 border-pale-yellow text-pale-yellow px-8 py-4 rounded-full font-semibold hover:bg-pale-yellow hover:text-black transition">
+                    <i class="fas fa-phone"></i>
+                    <span>Call to Order: 09782624466</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-20 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-gold tracking-widest text-sm mb-4 uppercase">What People Say</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-pale-yellow">Customer Love</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="specialty-card rounded-2xl p-8 card-hover">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Best chai in Jaipur! The ambiance is perfect for hangouts. Loved their tandoori maggie. Will definitely come back!"</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-pale-yellow rounded-full flex items-center justify-center">
+                            <span class="font-bold text-black">RK</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-pale-yellow">Rahul Kumar</p>
+                            <p class="text-gray-500 text-sm">via Google Reviews</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="specialty-card rounded-2xl p-8 card-hover">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Amazing cocktails and the vibe here is unmatched! Perfect place for evening hangouts with friends. 10/10 recommend!"</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-pale-yellow rounded-full flex items-center justify-center">
+                            <span class="font-bold text-black">PS</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-pale-yellow">Priya Sharma</p>
+                            <p class="text-gray-500 text-sm">via Instagram</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="specialty-card rounded-2xl p-8 card-hover">
+                    <div class="flex items-center space-x-1 mb-4">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Found this gem through Instagram. The discount offer is real! Great service, amazing food, and pocket-friendly prices."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-pale-yellow rounded-full flex items-center justify-center">
+                            <span class="font-bold text-black">AM</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-pale-yellow">Amit Meena</p>
+                            <p class="text-gray-500 text-sm">via Zomato</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-gold tracking-widest text-sm mb-4 uppercase">Captured Moments</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-pale-yellow mb-4">Gallery</h2>
+                <p class="text-gray-400">Tag us @RangoCafe and get featured!</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 1" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1514066558159-fc8c737ef259?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 2" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 3" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1485182708500-e8f1f318ba72?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 4" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1534353473418-4cfa6c56fd38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 5" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 6" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Gallery 7" class="w-full h-48 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fab fa-instagram text-white text-3xl"></i>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-2xl instagram-gradient flex items-center justify-center h-48 cursor-pointer hover:opacity-90 transition">
+                    <div class="text-center text-white">
+                        <i class="fab fa-instagram text-4xl mb-2"></i>
+                        <p class="font-semibold">Follow for More</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-gold tracking-widest text-sm mb-4 uppercase">Find Us</p>
+                <h2 class="font-playfair text-4xl md:text-5xl font-bold text-pale-yellow">Visit Us Today</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="specialty-card rounded-3xl p-8 mb-8">
+                        <h3 class="font-playfair text-2xl font-bold text-pale-yellow mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-location-dot text-black text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-pale-yellow mb-1">Address</h4>
+                                    <p class="text-gray-400">Rango Cafe & Kitchen, 43, Tagore Nagar, Chitrakoot, Jaipur, Rajasthan 302021</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone text-black text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-pale-yellow mb-1">Phone</h4>
+                                    <a href="tel:09782624466" class="text-gray-400 hover:text-gold transition">09782624466</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-pale-yellow rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-black text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-pale-yellow mb-1">Opening Hours</h4>
+                                    <p class="text-gray-400">Mon - Sun: 10:00 AM - 11:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://wa.me/919782624466" target="_blank" class="flex-1 flex items-center justify-center space-x-2 bg-green-600 text-white px-6 py-4 rounded-xl hover:bg-green-700 transition">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span class="font-semibold">WhatsApp</span>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" class="flex-1 flex items-center justify-center space-x-2 instagram-gradient text-white px-6 py-4 rounded-xl hover:opacity-90 transition">
+                            <i class="fab fa-instagram text-2xl"></i>
+                            <span class="font-semibold">Instagram</span>
+                        </a>
+                        <a href="https://maps.google.com" target="_blank" class="flex-1 flex items-center justify-center space-x-2 bg-blue-600 text-white px-6 py-4 rounded-xl hover:bg-blue-700 transition">
+                            <i class="fas fa-directions text-2xl"></i>
+                            <span class="font-semibold">Directions</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="rounded-3xl overflow-hidden h-96 md:h-auto">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.5!2d75.78!3d26.85!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDUxJzAwLjAiTiA3NcKwNDYnNDguMCJF!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="100%" style="border:0; min-height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="grayscale hover:grayscale-0 transition duration-500"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="py-16 bg-pale-yellow">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-playfair text-3xl md:text-4xl font-bold text-black mb-4">Ready for a Great Experience?</h2>
+            <p class="text-gray-700 text-lg mb-8">Join our Instagram family and never miss out on exclusive offers, new menu items, and cafe updates!</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://instagram.com" target="_blank" class="flex items-center space-x-2 bg-black text-pale-yellow px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition transform hover:scale-105">
+                    <i class="fab fa-instagram text-xl"></i>
+                    <span>Follow @RangoCafe</span>
+                </a>
+                <a href="tel:09782624466" class="flex items-center space-x-2 border-2 border-black text-black px-8 py-4 rounded-full font-semibold hover:bg-black hover:text-pale-yellow transition">
+                    <i class="fas fa-phone"></i>
+                    <span>Call Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-mug-hot text-pale-yellow text-2xl"></i>
+                        <span class="font-playfair text-xl font-bold text-pale-yellow">Rango Cafe</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Best Cafe in Vaishali, Jaipur. Serving happiness in every cup since day one.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 bg-dark-secondary rounded-full flex items-center justify-center text-pale-yellow hover:bg-pale-yellow hover:text-black transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 bg-dark-secondary rounded-full flex items-center justify-center text-pale-yellow hover:bg-pale-yellow hover:text-black transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://wa.me/919782624466" target="_blank" class="w-10 h-10 bg-dark-secondary rounded-full flex items-center justify-center text-pale-yellow hover:bg-pale-yellow hover:text-black transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-pale-yellow mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-pale-yellow transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-pale-yellow transition">About Us</a></li>
+                        <li><a href="#menu" class="hover:text-pale-yellow transition">Menu</a></li>
+                        <li><a href="#contact" class="hover:text-pale-yellow transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-pale-yellow mb-4">Specialties</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Masala Chai</li>
+                        <li>Loaded Maggie</li>
+                        <li>Craft Cocktails</li>
+                        <li>Cold Coffee</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-pale-yellow mb-4">Opening Hours</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Monday - Sunday</li>
+                        <li>10:00 AM - 11:00 PM</li>
+                        <li class="pt-2">
+                            <span class="text-gold">📍 Chitrakoot, Jaipur</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-500 text-sm">© 2024 Rango Cafe & Kitchen. All rights reserved. | Made with ☕ & ❤️ in Jaipur</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919782624466" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:bg-green-600 transition z-50 pulse-animation">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Floating Instagram Reminder -->
+    <div id="instagram-popup" class="fixed bottom-6 left-6 bg-dark-secondary border border-pale-yellow rounded-2xl p-4 shadow-2xl z-50 max-w-xs hidden">
+        <button onclick="closePopup()" class="absolute -top-2 -right-2 w-6 h-6 bg-pale-yellow text-black rounded-full text-sm">&times;</button>
+        <div class="flex items-center space-x-3">
+            <div class="instagram-gradient w-12 h-12 rounded-xl flex items-center justify-center">
+                <i class="fab fa-instagram text-white text-xl"></i>
+            </div>
+            <div>
+                <p class="text-pale-yellow font-semibold text-sm">Get 15% OFF!</p>
+                <p class="text-gray-400 text-xs">Follow us on Instagram</p>
+            </div>
+        </div>
+        <a href="https://instagram.com" target="_blank" class="block mt-3 text-center bg-pale-yellow text-black py-2 rounded-lg text-sm font-semibold hover:bg-gold transition">Follow Now</a>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-blur');
+            } else {
+                navbar.classList.remove('nav-blur');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Show Instagram popup after 5 seconds
+        setTimeout(() => {
+            document.getElementById('instagram-popup').classList.remove('hidden');
+        }, 5000);
+
+        function closePopup() {
+            document.getElementById('instagram-popup').classList.add('hidden');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

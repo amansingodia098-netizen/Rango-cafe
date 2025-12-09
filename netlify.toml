@@ -1,0 +1,49 @@
+# Netlify Configuration for Rango Cafe & Kitchen Website
+
+[build]
+  # Directory to publish (root since index.html is in root)
+  publish = "."
+  
+  # No build command needed for static HTML
+  command = ""
+
+# Headers for better performance and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Cache control for better performance
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Custom 404 page (uses index.html for SPA-like behavior)
+[[redirects]]
+  from = "/404"
+  to = "/index.html"
+  status = 404
+
+# Environment variables (if needed in future)
+[context.production.environment]
+  NODE_ENV = "production"
+
+# Dev server settings
+[dev]
+  port = 3000
+  command = ""
+  publish = "."
+  autoLaunch = true

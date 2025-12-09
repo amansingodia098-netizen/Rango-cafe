@@ -1,0 +1,13 @@
+# Netlify Redirects for Rango Cafe & Kitchen
+
+# Handle all routes - SPA style
+/*    /index.html   200
+
+# Custom domain redirects (update with your actual domain)
+# https://rangocafe.com/*  https://www.rangocafe.com/:splat  301
+
+# Social media redirects (optional shortcuts)
+/instagram    https://instagram.com/rangocafe    302
+/whatsapp     https://wa.me/919782624466         302
+/call         tel:09782624466                     302
+/maps         https://maps.google.com/?q=Rango+Cafe+Kitchen+Chitrakoot+Jaipur  302
